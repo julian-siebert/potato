@@ -1,0 +1,6 @@
+.idea
+.gradle
+*.bat
+build
+target
+test
