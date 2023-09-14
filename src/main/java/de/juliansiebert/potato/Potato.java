@@ -15,14 +15,6 @@ public final class Potato {
         this.compiler = new PotatoCompiler();
     }
 
-    public static void main(String... args) {
-        Potato potato = new Potato();
-        PotatoScript script = potato.loadScript("TestScript", "com/test/Test.java", new File("./test"));
-        script.start();
-        potato.unloadScript(script);
-        script.start();
-    }
-
     /**
      * Loads a Script java file from the sourceFolder.
      * For Example className 'de/example/ExampleScript' is in sourceFolder './scripts'.
@@ -32,14 +24,17 @@ public final class Potato {
      */
     public PotatoScript loadScript(String scriptName, String className, File sourceFolder) throws IllegalArgumentException, IllegalStateException {
         if (!sourceFolder.isDirectory()) throw new IllegalArgumentException("Given sourceFolder is not a directory");
-        if (!className.endsWith(".java")) throw new IllegalArgumentException("ClassName doesn't end with .java");
-        File sourceFile = new File(sourceFolder, className);
+        if (className.endsWith(".java")) {
+            className = className.substring(0, className.length() - 5);
+        }
+        className = className.replace(".", "/");
+        File sourceFile = new File(sourceFolder, className + ".java");
         if (!sourceFile.isFile()) throw new IllegalArgumentException("Script file is a directory");
         if (!sourceFile.exists()) throw new IllegalArgumentException("Script file doesn't exist");
         compiler.compile(sourceFile.getPath());
         try {
             PotatoScript script = this.classLoader.loadScript(scriptName, className, sourceFolder.toURI().toURL());
-            File classFile = new File(sourceFolder, className.replace(".java", ".class"));
+            File classFile = new File(sourceFolder, className + ".class");
             if (!script.getName().equals(scriptName)) {
                 this.classLoader.unloadScript(scriptName);
                 throw new IllegalStateException(scriptName + " doesn't match script " + className);
