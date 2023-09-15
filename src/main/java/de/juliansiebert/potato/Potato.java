@@ -16,10 +16,10 @@ public final class Potato {
     }
 
     /**
-     * Loads a Script java file from the sourceFolder.
-     * For Example className 'de/example/ExampleScript' is in sourceFolder './scripts'.
+     * Loads a script Java file from the sourceFolder.
+     * For example className 'de/example/ExampleScript' is in sourceFolder './scripts'.
      *
-     * @param className The target Script class
+     * @param className The target script class
      * @param sourceFolder The target folder with the path innit.
      */
     public PotatoScript loadScript(String scriptName, String className, File sourceFolder) throws IllegalArgumentException, IllegalStateException {
@@ -49,10 +49,10 @@ public final class Potato {
     }
 
     /**
-     * Loads a Script java file from the sourceFolder.
+     * Loads a script Java file from the sourceFolder.
      * For Example className 'de.example.ExampleScript' is in sourceFolder './scripts'.
      *
-     * @param className The target Script class
+     * @param className The target script class
      * @param sourceFolder The target folder with the path innit.
      */
     public PotatoScript loadScript(String scriptName, String className, String sourceFolder) {
