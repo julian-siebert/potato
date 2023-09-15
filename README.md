@@ -61,8 +61,9 @@ public final class Test implements PotatoScript {
 
 Now we can use following code in our program to run this script.
 
-**NOTE:** You cannot interact with other script classes. Every script has its own ClassLoader, so it's impossible to use it anyway.
-Only classes of the ClassLoader that creates the instance of the Potato class is accessible by script. 
+> **Note**  
+> You cannot interact with other script classes. Every script has its own ClassLoader, so it's impossible to use it anyway.
+> Only classes of the ClassLoader that creates the instance of the Potato class is accessible by script. 
 
 Following shows an example:
 
