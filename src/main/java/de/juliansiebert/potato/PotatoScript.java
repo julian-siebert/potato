@@ -7,7 +7,7 @@ public interface PotatoScript {
     void stop();
 
     /**
-     * Make sure that ypu completely remove any references that stop the gc from deleting this instance.
+     * Make sure that you completely remove any references that prevent the gc from deleting this instance.
      */
     void kill();
 
